@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "danccas/nexus-framework": "^1.0"
+        "danccas/nexus-framework": "^0.1"
     },
     "autoload": {
         "psr-4": {
