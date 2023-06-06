@@ -1,16 +1,13 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-date_default_timezone_set('America/Lima');
+namespace App\Http\Controllers;
 
+use Core\Controller;
 
-Route::any('', function ($route) {
-
-	return view('dashboard/welcome', compact('table'));
-});
-
-Route::else(function () {
-	exit("Limpio2");
-});
+class LoginController extends Controller
+{
+    function index()
+    {
+		return view('welcome.index');
+    }
+}
