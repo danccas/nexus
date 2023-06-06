@@ -5,7 +5,7 @@
     "keywords": ["framework", "nexus"],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.0",
         "danccas/nexus-framework": "^0.1"
     },
     "autoload": {
