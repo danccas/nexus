@@ -1,7 +1,7 @@
 {
     "name": "danccas/nexus",
     "type": "project",
-    "description": "The Nexus Framework.",
+    "description": "The Nexus Framework Web.",
     "keywords": ["framework", "nexus"],
     "license": "MIT",
     "require": {
