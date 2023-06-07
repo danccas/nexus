@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Core\Controller;
 
-class WelcomeController extends Controller
+class HelloWorldController extends Controller
 {
     function index()
     {
-		return view('welcome.index');
+		return view('helloworld.index');
     }
 }
