@@ -33,9 +33,7 @@ class Auth extends Identify
     {
         $error_msn[0] = "Cuenta bloqueada";
         $error_msn[1] = "Su cuenta se encuentra suspendida, comuniquese al 01-6336883 anexo 100  o al correo ticket@creainter.com.pe";
-        $error_msn[2] = "Lo sentimos el sistema ha detectado transmisiones con errores constantes, por tal motivo se ha bloqueado el acceso a su cuenta del SRT.  <br><br>
-                        Debe contactarse con CGM<br>
-                        <b>sgse@sutran.gob.pe</b>";
+        $error_msn[2] = "Lo sentimos el sistema ha detectado transmisiones con errores constantes";
         $error_msn[3] = "Actividad de IP sospechosa: Se ha detectado varias sesiones de su cuenta en diferentes direcciones IP<br><b>Cuenta bloqueada</b>";
         $error_msn[4] = "Urgente el sistema ha detectado envíos masivos de botón de pánico, por tal motivo se ha suspendido el acceso a su cuenta del SRT.  <br><br>
                         Debe contactarse con CGM para volver activarlo.";
