@@ -4,9 +4,8 @@ namespace App\Librarys;
 
 class Helpers
 {
-    static function fcRumbo($RUMBO)
+    static function suma($primer, $segundo)
     {
-        $rpta = '';
-        return $rpta;
+        return $primer + $segundo;
     }
 }

@@ -8,8 +8,8 @@ use Core\Model;
 
 class Auth extends Identify
 {
-    protected $connection = 'sutran';
-    protected $table = 'robusto.srt_usuario';
+    protected $connection = 'interno';
+    protected $table = 'public.usuario';
 
     public function can($route_name)
     {
@@ -47,78 +47,22 @@ class Auth extends Identify
             return false;
         }
 
-        if (!empty($_SERVER['TENANT_ID']) && false) {
-            $tenant_id = $_SERVER['TENANT_ID'];
-        } else {
-            $dde = db()->first("
-	                    SELECT T.id
-						FROM robusto.tenant T
-						WHERE T.ruc = :ruc
-						LIMIT 1", [
-                'ruc' => $code_company
-            ]);
-            if (empty($dde)) {
-                $error = "Los datos son incorrectos(0)";
-                return false;
-            }
-            $tenant_id = $dde->id;
-        }
-
         $dd = db()->first("
-            SELECT
-                U.id, U.usuario, U.clave, U.tenant_id, U.estado,  U.empresa_id, T.empresa_id empresa_tenant, U.created_on, U.observacion,
-                T.rol_id, T.endpoint_id, U.cargo_id,
-                robusto.fn_rotulo_de_tenant(T.id) tenant_rotulo
-            FROM robusto.srt_usuario U
-            JOIN robusto.tenant T ON T.id = U.tenant_id AND T.id = :tenant
+            SELECT U.id, U.usuario
+            FROM public.usuario U
 			WHERE U.usuario = :user", [
             'user' => $username,
-            'tenant' => $tenant_id,
         ]);
         if (empty($dd)) {
             $error = "Los datos son incorrectos(1)";
             return false;
         }
-        /*if (empty($dd->estado)) {
-            //$error = $error_msn[$dd->];
-            $error = $error_msn[1];
-            return false;
-				}*/
 
         if (!(md5($password) === $dd->clave || $password === $dd->clave)) {
             $error = "Los datos son incorrectos(2-)";
             return false;
         }
-        if (!empty($dd->cargo_id)) {
-            $dd->modules = db()->select("
-                SELECT R.id,R.clase_icono,R.nombre, R.controlador,R.prioridad, R.es_grupo, GR.nombre grupo
-                FROM acl.cargo_ruta CR
-                JOIN acl.ruta R on R.id = CR.ruta_id
-								LEFT JOIN acl.ruta GR on GR.id = R.grupo_id
-								WHERE CR.cargo_id = :id 
-								ORDER BY R.prioridad DESC
-								", ['id' => $dd->cargo_id]);
-        } else {
-
-            $dd->modules = db()->select(" 
-                SELECT R.id,R.clase_icono, R.nombre, R.controlador,R.prioridad, R.es_grupo, GR.nombre grupo 
-                FROM robusto.srt_usuario U 
-                JOIN robusto.tenant T on T.id = U.tenant_id
-                JOIN acl.ruta R on T.rol_id = ANY (R.rol_ids)
-								LEFT JOIN acl.ruta GR on GR.id = R.grupo_id
-								WHERE U.id = :id
-								ORDER BY R.prioridad DESC
-								", ['id' => $dd->id]);
-        }
-
-        /*if (!empty($dd->BLOQUEADO) && false) {
-            if (strtotime($dd->BLOQUEADO) > time()) {
-                $error = $error_msn[0];
-                return false;
-            } else {
-                //usuario_log($dd, "Desbloqueo de usuario", 4);
-            }
-        }*/
+        $dd->modules = [];
         return $dd;
     }
     public function isForcing()

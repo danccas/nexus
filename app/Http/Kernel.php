@@ -9,4 +9,10 @@ class Kernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'authRest' => \App\Http\Middleware\AuthenticateRest::class,
     ];
+    
+    public $middlewareGroups = [
+        'auth' => [
+          \App\Http\Middleware\Authenticate::class,
+        ]
+      ];
 }
