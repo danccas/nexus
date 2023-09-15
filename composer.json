@@ -6,7 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "danccas/nexus-framework": "^1.0.0"
+        "danccas/nexus-framework": "^1.0.0",
+        "setasign/fpdf": "1.8.*",
+        "setasign/fpdi": "^2.0",
+        "bacon/bacon-qr-code": "2.0.8"
     },
     "autoload": {
         "psr-4": {
