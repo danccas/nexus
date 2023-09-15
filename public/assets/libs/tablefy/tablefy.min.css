@@ -1,0 +1,432 @@
+.tablefy {
+    position: relative;
+  }
+  .tablefy th, .tablefy td {
+    padding: 0;
+    margin: 0;
+  }
+  .tablefy > .tablefy_block_columns {
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    background: #ffffff;
+    border: 1px solid #8f8f8f;
+    border-radius: 5px;
+    width: 200px;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    max-height: 300px;
+    overflow: auto;
+  }
+  .tablefy > .tablefy_block_columns > li {
+    padding: 4px 10px;
+    font-size: 14px;
+    color: #000000;
+    text-shadow: 1px 1px 1px #fff;
+    cursor: pointer;
+    background: #a6c9e2;
+    margin: 2px;
+    position: relative;
+  }
+  .tablefy > .tablefy_block_columns > li label {
+    width: 165px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    display: block;
+    line-height: 10px;
+  }
+  .tablefy > .tablefy_block_columns > li .txtValue {
+    padding-left: 5px;
+    white-space: nowrap;
+    position: absolute;
+    left: 25px;
+    width: 135px;
+    overflow: hidden;
+    margin: 0;
+    top: 6px;
+  }
+  .tablefy > .tablefy_block_columns > li .txtCantidad {
+    display: inline-block;
+    color: #000;
+    font-size: 10px;
+    top: 6px;
+    right: 12px;
+    position: absolute;
+  }
+  .tablefy > .tablefy_menu {
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    background: #dfeffc;
+    border: 2px solid #3b7399;
+    width: 200px;
+    min-height: 50px;
+    box-shadow: 2px 2px 16px 1px #24465d;
+  }
+  .tablefy > .tablefy_menu > li {
+    padding: 4px 10px;
+    font-size: 14px;
+    color: #000000;
+    text-shadow: 1px 1px 1px #fff;
+    cursor: pointer;
+    background: #a6c9e2;
+    margin: 2px;
+  }
+  .tablefy .tablefy_tables {
+    width: 100%;
+  }
+  .tablefy > .tablefy_loading {
+    display: none;
+    position: absolute;
+    margin: 0 auto;
+    background: rgb(234 238 246);
+    /* background: rgb(181 181 181 / 60%);*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 16px;
+    padding-top: 50px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000;
+    text-align: center;
+    z-index: 9;
+  }
+  .tablefy > .tablefy_loading > img {
+  
+    max-height: 100%;
+      height: 80%;
+  }
+  .tablefy > .tablefy_block {
+    display: none;
+    position: absolute;
+    margin: 0 auto;
+    background: rgba(47, 47, 47, 0.6);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 16px;
+    padding-top: 50px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000;
+    text-align: center;
+  }
+  .tablefy .tablefy_tables table {
+    border: 1px solid #b5b5b5;
+    background: #ffffff;
+    color: #222;
+    width: 100%;
+  }
+  .tablefy .tablefy_tables thead > tr.title > th {
+    padding: .7em .2em .5em .6em;
+    position: relative;
+    height: 28px;
+    padding-left: 11px;
+    border-left: 0px none;
+    border-right: 0px none;
+    border-top: 0px none;
+    border: 1px solid #c3c3c3;
+    background: #ededed;
+    border-bottom: solid 3px #666;
+  }
+  .tablefy .tablefy_tables thead > tr.title > th  div.title {
+    font-weight: bold;
+    color: #363636;
+    font-size: 12px;
+  }
+  .tablefy .tablefy_extra_buttons {
+    position: absolute;
+      top: 0;
+      right: 600px;
+      height: 25px;
+      background: #ccc6ff;
+  }
+  .tablefy .tablefy_extra_buttons .btn {
+    background: #383838;
+    color: #fff!important;
+    padding: 0px 10px;
+    margin: 5px;
+    margin-bottom: 5px;
+  }
+  .tablefy .tablefy_search {
+    position: absolute;
+    top: 0;
+    right: 120px;
+  }
+  .tablefy .tablefy_search  input {
+  
+    height: 26px;
+    border: 1px solid #a3a3a3;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 12px;
+    width: 250px;
+    margin-right: 5px;
+  }
+  .tablefy .tablefy_search .btn {
+    font-size: 11px;
+    height: 26px;
+    line-height: 13px;
+  }
+  .tablefy .tablefy_refresh {
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    margin-right: 10px;
+  }
+  .tablefy .tablefy_refresh:hover {
+    background: #A8DCFF;
+    border-radius: 5px;
+  }
+  .tablefy .tablefy_refresh > img {
+    width: 25px;
+  }
+  .tablefy .tablefy_overflow {
+    position: relative;
+  }
+  .tablefy .tablefy_overflow > .tablefy_rulertime {
+    position: absolute;
+    height: 1px;
+    left: 0;
+    right: 0;
+    border-bottom: 2px solid red;
+    z-index: 900;
+    display: none;
+  }
+  .tablefy .tablefy_tables > .tablefy_rulertime_end {
+    display: none;
+    color: #3b7399;
+    font-size: 20px;
+    padding: 3px;
+    text-align: right;
+    background: #dfeffc;
+    border: 1px solid #a6c9e2;
+    border-bottom: 0;
+  }
+  .tablefy_rulertime_end small {
+    font-size: 15px;
+    color: #444444;
+  }
+  .tablefy .tablefy_tables thead > tr.header {
+    border: 1px solid #bdbdbd;
+    background: #ffffff;
+    font-weight: bold;
+    color: #000000;
+    height: 28px;
+    font-size: 11px;
+  }
+  .tablefy .tablefy_tables thead > tr.header > th {
+  cursor: pointer;
+      height: 20px;
+      line-height: 25px;
+      font-size: 10px;
+      text-align: center;
+  }
+  .tablefy .tablefy_tables thead > tr.header > th.tablefy_order {
+    color: #000;
+    text-shadow: 0px 0px 4px #FFF;
+    font-size: 12px;
+  }
+  .tablefy .tablefy_tables tbody > tr.rulertime {
+    /* background: #ffc8c8; */
+    animation: blinker 1s linear infinite;
+  }
+  @keyframes blinker {
+    50% {
+      background: #ffc8c8;
+    }
+  }
+  td.tablefy-td[data-xeditable=true] {
+    background: rgb(127 134 255 / 9%);
+    padding: 2px 0;
+    position: relative;
+  }
+  td.tablefy-td[data-xeditable=true]:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    width: 5px;
+    height: 5px;
+  }
+  td.tablefy-td[data-xeditable=true].xedit-open:before {
+    background: #86c2ff!important;
+  }
+  td.tablefy-td[data-xeditable=true].xedit-success:before {
+    background: green!important;
+  }
+  td.tablefy-td[data-xeditable=true].xedit-error:before {
+    background: red!important;
+  }
+  .tablefy .is-editing {
+  /*  background: #abffb6!important;*/
+  }
+  
+  .tablefy .tablefy-td-content input {
+    max-width: 100%;
+    text-align: center;
+    border: 0;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    word-break: break-word;
+  }
+  .tablefy .tablefy_tables tbody > tr > td.number {
+    border: 1px solid #cfcfcf;
+    background: #efefef;
+    font-weight: bold;
+    color: #3e3e3e;
+    text-align: center;
+    height: 18px;
+    vertical-align: middle;
+  }
+  .tablefy .tablefy_tables tbody > tr > td.draggable {
+    border: 1px solid #d3d3d3;
+  /*  background: #f9f9f9 url(http://www.timeexposure.com/support/ac_global/media/drag_icon.gif) 50% 50% no-repeat;*/
+    cursor: move;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    height: 18px;
+  }
+  .tablefy .tablefy_tables tbody > tr > td {
+    font-size: 11px;
+    border: 1px solid #a6c9e2;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .tablefy .tablefy_tables a {
+    color: inherit!important;
+  }
+  .tablefy .tablefy_tables tbody > tr > td > div {
+    margin: 5px;
+    white-space: pre-line;
+  }
+  .tablefy .tablefy_tables tbody > tr.marked {
+    border: 1px solid #3B7399;
+    background: #FFE99D;
+  }
+  .tablefy .tablefy_tables tbody > tr:hover {
+    background: #fff9b0!important;
+    color: black;
+  }
+  .tablefy .tablefy_tables tbody > tr.selected {
+    background: #7989ff!important;
+    color: white;
+  }
+  .tablefy .tablefy_tables tbody > tr.selected > .number {
+    border: 1px solid #fad42e;
+    background: #fbec88;
+  }
+  
+  .tablefy .tablefy_tables tbody > tr.hover {
+    background: #7989ff!important;
+    color: white;
+  }
+  .tablefy .tablefy_tables tfoot > tr > td {
+    background: #dde0e3;
+    height: 20px;
+    color: #4c4c4c;
+  }
+  .tablefy .tablefy_table_actions {
+    border-spacing: 8px 0;
+    border-collapse: separate;
+    background: none!important;
+    border: none!important;
+  }
+  .tablefy .tablefy_table_actions td {
+    cursor: pointer;
+    border: none!important;
+  }
+  .tablefy .tablefy_table_actions td:hover {
+    background: #C6DEF2;
+  }
+  .tablefy .tablefy_actions {
+    float:left;
+  }
+  .tablefy .tablefy_console {
+    text-align: right;
+    float: right;
+    margin: 5px 10px;
+    font-size: 11px;
+  }
+  .tablefy .tablefy_records {
+    text-align: right;
+    position: absolute;
+    margin: 5px 10px;
+    font-size: 11px;
+    right: 460px;
+  }
+  .tablefy .tablefy_pagination {
+    text-align: right;
+    position: absolute;
+    font-size: 11px;
+    right: 600px;
+    margin: 0 10px;
+    padding: 5px 10px;
+  }
+  .tablefy .tablefy_pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .tablefy .tablefy_pagination ul > li.disabled {
+    cursor: not-allowed;
+  }
+  .tablefy .tablefy_pagination ul > li {
+    display: inline-block;
+    margin: 0 8px;
+  }
+  .tablefy .tablefy_pagination ul > li.enabled:hover {
+    background: #9a79ff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .tablefy .tablefy_pagination ul > li.prev_page {
+  }
+  .tablefy .tablefy_pagination ul > li.current_page {
+  }
+  .tablefy .tablefy_pagination ul > li.next_page {
+  }
+  
+  .tablefy .tablefy_execute {
+    text-align: right;
+    position: absolute;
+    margin: 5px 10px;
+    font-size: 11px;
+    right: 225px;  
+  }
+  
+  /* Sortable */
+  .ui-sortable-placeholder {
+      border: 3px dashed #aaa;
+      height: 45px;
+      width: 344px;
+      background: #b3b3b3;
+  }
+  
+  .tablefy .tablefy_pagination .prev_page {
+    position: absolute;
+      right: 160px;
+  }
+  .tablefy .tablefy_pagination .pagination {
+  position: absolute;
+      right: 76px;
+      min-width: 68px;
+      text-align: center;
+      margin: 0 auto;
+      flex-direction: column;
+    }
+  
+  .tablefy .tablefy_pagination .next_page {
+  }
+  
