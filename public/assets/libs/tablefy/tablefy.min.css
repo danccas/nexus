@@ -429,4 +429,19 @@
   
   .tablefy .tablefy_pagination .next_page {
   }
-  
+ 
+.tablefy_table_actions span {
+    font-size: 15px;
+    line-height: 25px;
+    padding: 0 5px;
+}
+.tablefy-td-actions span {
+  font-size: 16px;
+  padding: 0 3px;
+}
+.tablefy-td-actions ul {
+  padding: 0 10px;
+}
+.tablefy-td-actions li {
+    padding: 0;
+}

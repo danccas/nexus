@@ -6,8 +6,8 @@ use Core\Model;
 
 class Libro extends Model
 {
-    protected $connection = 'interno';
-    protected $table = 'public.libro';
+    protected $connection = 'financiero';
+    protected $table = 'public.usuario';
     protected $fillable = ['id','rotulo','categoria'];
 
 }

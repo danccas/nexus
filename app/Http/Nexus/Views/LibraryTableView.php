@@ -1,44 +1,49 @@
 <?php
 
-namespace App\Tablefy\Views;
+namespace App\Http\Nexus\Views;
 
-use Core\Tablefy\Tablefy;
-use App\Tablefy\Actions\ActivateUserAction;
+use Core\Nexus\Tablefy;
+use Core\Nexus\Header;
+use Core\Nexus\Action;
+use App\Http\Nexus\Actions\ActivateUserAction;
 use App\Models\Libro;
 
-class LibroTablefy extends Tablefy
+class LibraryTableView extends Tablefy
 {
     protected $model = Libro::class;
-    protected $paginate = 10;
+    protected $paginate = 15;
 
     public function headers(): array
     {
         return [
-            'Name',
-            'Email',
-            'Created',
-            'Updated'
+            Header::name('Id')->width(100),
+            Header::name('Username')->width(200),
+            Header::name('Password')->width(300),
+            'Created2'
         ];
     }
 
     public function row($model)
     {
         return [
-            $model->name,
-            $model->email,
-            $model->created_at,
-            $model->updated_at
+            $model->id,
+            $model->usuario,
+            $model->clave,
+            $model->created_on
         ];
     }
     protected function repository()
     {
-        return [];
         return $this->query("SELECT * FROM public.usuario LIMIT 100");
     }
     protected function actionsByRow()
     {
         return [
-            new ActivateUserAction,
+          new ActivateUserAction,
+          Action::title('Eliminar')->icon('error')->link('/dashboard'),
+          Action::title('Mensajear')->icon('message')->click(function($n) {
+            return true;
+          })
         ];
     }
 
