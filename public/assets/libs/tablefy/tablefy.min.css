@@ -116,7 +116,6 @@
     text-align: center;
   }
   .tablefy .tablefy_tables table {
-    border: 1px solid #b5b5b5;
     background: #ffffff;
     color: #222;
     width: 100%;
@@ -124,13 +123,11 @@
   .tablefy .tablefy_tables thead > tr.title > th {
     padding: .7em .2em .5em .6em;
     position: relative;
-    height: 28px;
     padding-left: 11px;
     border-left: 0px none;
     border-right: 0px none;
     border-top: 0px none;
     border: 1px solid #c3c3c3;
-    background: #ededed;
     border-bottom: solid 3px #666;
   }
   .tablefy .tablefy_tables thead > tr.title > th  div.title {
@@ -153,19 +150,11 @@
     margin-bottom: 5px;
   }
   .tablefy .tablefy_search {
-    position: absolute;
-    top: 0;
-    right: 120px;
+    max-width: 30%;
+    width: -webkit-fill-available;
   }
   .tablefy .tablefy_search  input {
-  
-    height: 26px;
-    border: 1px solid #a3a3a3;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 12px;
-    width: 250px;
-    margin-right: 5px;
+   padding-left: 40px; 
   }
   .tablefy .tablefy_search .btn {
     font-size: 11px;
@@ -173,11 +162,8 @@
     line-height: 13px;
   }
   .tablefy .tablefy_refresh {
-    cursor: pointer;
-    position: absolute;
-    top: 2px;
-    right: 10px;
-    margin-right: 10px;
+    font-size: x-large;
+    margin-right: 30px;
   }
   .tablefy .tablefy_refresh:hover {
     background: #A8DCFF;
@@ -298,13 +284,8 @@
     height: 18px;
   }
   .tablefy .tablefy_tables tbody > tr > td {
-    font-size: 11px;
-    border: 1px solid #a6c9e2;
-    vertical-align: middle;
-    text-align: center;
   }
   .tablefy .tablefy_tables a {
-    color: inherit!important;
   }
   .tablefy .tablefy_tables tbody > tr > td > div {
     margin: 5px;
@@ -332,9 +313,6 @@
     color: white;
   }
   .tablefy .tablefy_tables tfoot > tr > td {
-    background: #dde0e3;
-    height: 20px;
-    color: #4c4c4c;
   }
   .tablefy .tablefy_table_actions {
     border-spacing: 8px 0;
@@ -350,28 +328,23 @@
     background: #C6DEF2;
   }
   .tablefy .tablefy_actions {
-    float:left;
+    position: absolute;
+    left: 5px;
+    bottom: 10px;
   }
+  .tablefy_records, .tablefy_execute, .tablefy_console, .tablefy_refresh {
+    display: flex;
+    align-items: center;
+    color: #405189;
+}
   .tablefy .tablefy_console {
-    text-align: right;
-    float: right;
-    margin: 5px 10px;
-    font-size: 11px;
   }
   .tablefy .tablefy_records {
-    text-align: right;
-    position: absolute;
-    margin: 5px 10px;
-    font-size: 11px;
-    right: 460px;
+        padding: 0 10px;
   }
+
   .tablefy .tablefy_pagination {
-    text-align: right;
-    position: absolute;
-    font-size: 11px;
-    right: 600px;
-    margin: 0 10px;
-    padding: 5px 10px;
+    padding: 0 10px;
   }
   .tablefy .tablefy_pagination ul {
     list-style: none;
@@ -399,11 +372,6 @@
   }
   
   .tablefy .tablefy_execute {
-    text-align: right;
-    position: absolute;
-    margin: 5px 10px;
-    font-size: 11px;
-    right: 225px;  
   }
   
   /* Sortable */
@@ -415,19 +383,24 @@
   }
   
   .tablefy .tablefy_pagination .prev_page {
-    position: absolute;
-      right: 160px;
+    color: #003E9B;
+    font-weight: 500;
+    padding: .375rem .75rem;
+    border: 1px solid #e9ebec;
+    border-radius: .25rem;
+    text-decoration: none!important;
   }
   .tablefy .tablefy_pagination .pagination {
-  position: absolute;
-      right: 76px;
-      min-width: 68px;
-      text-align: center;
-      margin: 0 auto;
-      flex-direction: column;
-    }
+
+  }
   
   .tablefy .tablefy_pagination .next_page {
+        color: #003E9B;
+    font-weight: 500;
+    padding: .375rem .75rem;
+    border: 1px solid #e9ebec;
+    border-radius: .25rem;
+    text-decoration: none!important;
   }
  
 .tablefy_table_actions span {
