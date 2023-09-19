@@ -8,7 +8,9 @@
   @yield('styles')
 </head>
 <body>
+  <div class="container">
   @yield('content')
+  </div>
   @include('panels.scripts')
   @yield('scripts')
 </body>
