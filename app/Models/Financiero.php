@@ -28,16 +28,19 @@ class Financiero extends Model
     M2.nombre as moneda2
   FROM financiero.movimiento MOV
   JOIN financiero.cuenta C ON C.id = MOV.cuenta_id
+  JOIN financiero.moneda M ON M.id = C.moneda_id
   LEFT JOIN financiero.sujeto S ON S.id = MOV.sujeto_id
   LEFT JOIN financiero.moneda M2 ON M2.id = MOV.moneda_id
-  JOIN financiero.moneda M ON M.id = C.moneda_id
   LEFT JOIN financiero.tipo T ON T.id = C.tipo_id
   LEFT JOIN financiero.categoria CAT ON CAT.id = MOV.categoria_id
   LEFT JOIN financiero.banco B ON B.id = C.banco_id
   WHERE MOV.tenant_id = :tenant AND MOV.fecha::date <= :visto_last AND MOV.eliminado IS NULL AND MOV.efectuado IS TRUE
-  ORDER BY MOV.fecha ASC, MOV.id ASC", [
+    AND (MOV.tags IS NULL OR NOT('CONFIDENCIAL' = ANY(MOV.tags)))
+  --search AND UPPER(descripcion) LIKE CONCAT('%', :q::text, '%')
+
+  ORDER BY MOV.fecha DESC, MOV.id DESC", [
         'tenant' => 1,
-        'visto_last' => '2023-09-15',
+        'visto_last' => '2023-10-01',
   ]);
     }
     public static function tablefyMovimientosPendientes() {
@@ -56,16 +59,18 @@ class Financiero extends Model
     M2.nombre as moneda2
   FROM financiero.movimiento MOV
   JOIN financiero.cuenta C ON C.id = MOV.cuenta_id
+  JOIN financiero.moneda M ON M.id = C.moneda_id
   LEFT JOIN financiero.sujeto S ON S.id = MOV.sujeto_id
   LEFT JOIN financiero.moneda M2 ON M2.id = MOV.moneda_id
-  JOIN financiero.moneda M ON M.id = C.moneda_id
   LEFT JOIN financiero.tipo T ON T.id = C.tipo_id
   LEFT JOIN financiero.categoria CAT ON CAT.id = MOV.categoria_id
   LEFT JOIN financiero.banco B ON B.id = C.banco_id
   WHERE MOV.tenant_id = :tenant AND MOV.fecha::date <= :visto_last AND MOV.eliminado IS NULL AND MOV.efectuado IS FALSE
-  ORDER BY MOV.fecha ASC, MOV.id ASC", [
+    AND (MOV.tags IS NULL OR NOT('CONFIDENCIAL' = ANY(MOV.tags)))
+  --search AND UPPER(descripcion) LIKE CONCAT('%', :q::text, '%')
+  ORDER BY MOV.fecha DESC, MOV.id DESC", [
         'tenant' => 1,
-        'visto_last' => '2023-09-15',
+        'visto_last' => '2023-10-01',
   ]);
     }
     static function reporteAnual() {
@@ -92,12 +97,34 @@ class Financiero extends Model
       return db('financiero')->tablefy("SELECT * FROM financiero.obtener_cuentas_creditos(NOW()::timestamp)");
     }
 
+    static function cuentasRegistradas() {
+      return db('financiero')->get("
+  SELECT
+    CONCAT(C.id, ' | ', T.nombre, ' | ', M.nombre, ' | ', B.nombre, ' | ', E.razon_social, ' | ', C.nombre) rotulo,
+    C.id,
+    C.nombre,
+    C.credito,
+    C.numero,
+    C.tipo_id,
+    C.fecha_cierre,
+    C.fecha_facturacion,
+    M.nombre as moneda,
+    T.nombre as tipo,
+    B.nombre as banco,
+    E.razon_social empresa
+  FROM financiero.cuenta C
+  JOIN financiero.moneda M ON M.id = C.moneda_id
+  JOIN financiero.tipo T ON T.id = C.tipo_id
+  LEFT JOIN financiero.banco B ON B.id = C.banco_id
+  LEFT JOIN osce.empresa E ON E.id = C.empresa_id
+  WHERE C.tenant_id = 1 AND C.eliminado IS NULL
+  ORDER BY T.id ASC, moneda DESC, banco, nombre");
+    }
     static function formMovimiento() {
-      $cuentas = [];
       $form = Formity::getInstance('movimiento');
 $form->setUniqueId('nuevo');
 $form->setTitle('Transacción');
-$form->addField('cuenta_id:Cuenta', 'select')->setOptions($cuentas);
+$form->addField('cuenta_id:Cuenta', 'select')->setOptions(static::cuentasRegistradas()->pluck('rotulo', 'id'));
 $form->addField('tags:Etiquetas', 'input:text');
 $form->addField('fecha', 'input:datetime-local')->setValue(date('Y-m-d H:i:s'));
 $form->addField('descripcion', 'textarea:autocomplete')->setOptions(function($form, $field, $term) {

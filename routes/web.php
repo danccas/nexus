@@ -15,7 +15,7 @@ Route::get('library', 'App\Http\Controllers\LibraryController@index')->name('lib
 Route::post('library/repository', 'App\Http\Nexus\Views\LibraryTableView@response')->name('library.tablefy');
 
 
-Route::get('financiero', 'App\Http\Controllers\FinancieroController@index');
+Route::get('financiero', 'App\Http\Controllers\FinancieroController@index')->name('financiero.index');
 Route::post('financiero/movimientos_tablefy', 'App\Http\Controllers\FinancieroController@movimientos_tablefy')->name('financiero.movimientos_tablefy');
 Route::post('financiero/movimientos_pendientes_tablefy', 'App\Http\Controllers\FinancieroController@movimientos_pendientes_tablefy')->name('financiero.movimientos_pendientes_tablefy');
 
@@ -23,5 +23,7 @@ Route::post('financiero/cuentas_debito_tablefy', 'App\Http\Controllers\Financier
 Route::post('financiero/cuentas_credito_tablefy', 'App\Http\Controllers\FinancieroController@cuentas_credito_tablefy')->name('financiero.cuentas_credito_tablefy');
 
 Route::get('financiero/create/movimiento', 'App\Http\Controllers\FinancieroController@create_movimiento')->name('financiero.create_movimiento');
+Route::post('financiero/create/movimiento', 'App\Http\Controllers\FinancieroController@create_movimiento_store')->name('financiero.create_movimiento_store');
 
 Route::post('financiero/repository/cuentas_debito', 'App\Http\Nexus\Views\CuentasDebitoTableView@response')->name('repository.cuentas_debito');
+Route::post('financiero/repository/cuentas_credito', 'App\Http\Nexus\Views\CuentasCreditoTableView@response')->name('repository.cuentas_credito');

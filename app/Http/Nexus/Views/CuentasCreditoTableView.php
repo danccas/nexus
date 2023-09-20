@@ -8,7 +8,7 @@ use Core\Nexus\Action;
 use App\Http\Nexus\Actions\ActivateUserAction;
 use App\Models\Financiero;
 
-class CuentasDebitoTableView extends Tablefy
+class CuentasCreditoTableView extends Tablefy
 {
     protected $model = Financiero::class;
     protected $paginate = 15;
@@ -16,9 +16,9 @@ class CuentasDebitoTableView extends Tablefy
     public function headers(): array
     {
         return [
-            Header::name('Cuenta')->width(130),
-            Header::name('Cont.')->width(60),
-            Header::name('Disp.')->width(60),
+            Header::name('Cuenta')->width(150),
+            Header::name('Cred.')->width(60),
+            Header::name('Cons.')->width(60),
             Header::name('Proy.')->width(60),
         ];
     }
@@ -34,7 +34,7 @@ class CuentasDebitoTableView extends Tablefy
     }
     protected function repository()
     {
-        return $this->query("SELECT * FROM financiero.obtener_cuentas_debitos(NOW()::timestamp)");
+        return $this->query("SELECT * FROM financiero.obtener_cuentas_creditos(NOW()::timestamp)");
     }
     protected function actionsByRow()
     {

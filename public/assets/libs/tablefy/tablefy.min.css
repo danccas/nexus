@@ -122,6 +122,10 @@
     width: 100%;
   }
   .tablefy .tablefy_tables thead > tr.title > th {
+    padding: 0;
+    border-bottom: solid 1px #b3b3b3;
+    padding-bottom: 5px;
+/*
     padding: .7em .2em .5em .6em;
     position: relative;
     padding-left: 11px;
@@ -130,6 +134,7 @@
     border-top: 0px none;
     border: 1px solid #c3c3c3;
     border-bottom: solid 3px #666;
+    */
   }
   .tablefy .tablefy_tables thead > tr.title > th  div.title {
     font-weight: bold;
@@ -288,6 +293,7 @@
   .tablefy .tablefy_tables tbody > tr > td {
   }
   .tablefy .tablefy_tables a {
+    text-decoration: none;
   }
   .tablefy .tablefy_tables tbody > tr > td > div {
     margin: 5px;
@@ -393,7 +399,8 @@
     text-decoration: none!important;
   }
   .tablefy .tablefy_pagination .pagination {
-
+    text-wrap: nowrap;
+    text-decoration: none;
   }
   
   .tablefy .tablefy_pagination .next_page {
@@ -419,4 +426,16 @@
 }
 .tablefy-td-actions li {
     padding: 0;
+}
+.tablefy_table_footer {
+  font-size: 11px;
+}
+.tablefy-small .tablefy_table_footer {
+  font-size: 8px;
+}
+.tablefy-small .tablefy_overflow {
+  font-size: 10px;
+}
+.tablefy.tablefy-small .tablefy_tables thead > tr.header > th {
+  font-size: 9px!important;
 }

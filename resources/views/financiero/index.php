@@ -18,7 +18,7 @@
     <div class="card mb-3">
       <div class="card-body">
         <div>
-        <nexus:tablefy :route="repository.cuentas_debito" height="20px">
+        <nexus:tablefy :route="repository.cuentas_debito" height="400px" size="small">
         </nexus:tablefy>
         </div>
       </div>
@@ -28,25 +28,8 @@
     <div class="card mb-3">
       <div class="card-body">
         <div>
-        <nexus:tablefy :route="financiero.cuentas_credito_tablefy" height="100px" headers:json="[{name:'Cuenta', width:300}, {name: 'Contable', width:100}, {name: 'Disponible'}]">
+        <nexus:tablefy :route="repository.cuentas_credito" height="400px" size="small">
         </nexus:tablefy>
-
-        @tablefy('financiero.cuentas_credito_tablefy', [
-                        'headers' => [
-                            [
-                                'name' => 'CUENTA',
-                                'width' => 300,
-                            ],
-                            [
-                                'name' => 'CONTABLE',
-                                'width' => 100,
-                            ],
-                            [
-                                'name' => 'DISPONIBLE',
-                            ],
-          ]
-
-      ])
         </div>
       </div>
     </div>
@@ -125,26 +108,15 @@
   </div>
 </div>
 <div class="row">
+  <div class="column col-12 text-center">
+            <a class="btn btn-danger mb-2" href="{{ route('financiero.create_movimiento') }}" data-popup>Registrar nuevo Movimiento</a>
+  </div>
   <div class="column col-6">
     <div class="card mb-3">
       <div class="card-body">
         <div>
-@tablefy('financiero.movimientos_pendientes_tablefy', [
-'headers' => [
-                            [
-                                'name' => 'FECHA',
-                                'width' => 90,
-                            ],
-                            [
-                                'name' => 'MOVIMIENTO',
-                                'width' => 400,
-                            ],
-                            [
-                                'name' => 'MONTO',
-                            ],
-          ]
-
-      ])
+          <nexus:tablefy :route="financiero.movimientos_pendientes_tablefy" height="1200px" headers:json="[{name:'FECHA',width:80},{name:'MOVIMIENTO',width:300},{name:'MONTO'}]">
+          </nexus:tablefy>
         </div>
       </div>
     </div>
@@ -152,24 +124,9 @@
   <div class="column col-6">
     <div class="card mb-3">
       <div class="card-body">
-        <a class="btn btn-danger mb-2" href="{{ route('financiero.create_movimiento') }}" data-popup>Registrar nuevo Movimiento</a>
     <div>
-      @tablefy('financiero.movimientos_tablefy', [
-                        'headers' => [
-                            [
-                                'name' => 'FECHA',
-                                'width' => 90,
-                            ],
-                            [
-                                'name' => 'MOVIMIENTO',
-                                'width' => 400,
-                            ],
-                            [
-                                'name' => 'MONTO',
-                            ],
-          ]
-
-      ])
+          <nexus:tablefy :route="financiero.movimientos_tablefy" height="1200px" headers:json="[{name:'FECHA',width:80},{name:'MOVIMIENTO',width:300},{name:'MONTO'}]">
+          </nexus:tablefy>
     </div>
     </div>
     </div>

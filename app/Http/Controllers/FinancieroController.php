@@ -21,10 +21,10 @@ class FinancieroController extends Controller
         ->map(function($n) {
           $n = (array) $n;
           return array(
-    '<div><a href="?cid=' . $n['id'] . '">#' . $n['id'] . ':' . $n['banco'] . ':' . $n['moneda'] . ':' . $n['cuenta'] . '</a></div><small>' . $n['numero'] . ' - Ajustado: ' . ($n['ajustes']) . '</small>',
-    implode(',', [$n['contable'], $n['moneda'], 'CONTABLE ACTUAL']),
-    implode(',', [$n['disponible'], $n['moneda'], 'DISPONIBLE ACTUAL']),
-    implode(',', [$n['proyectado_disponible'] + $n['disponible'], $n['moneda'], 'PROYECTADO DISPONIBLE ACTUAL']),
+            '<div><a href="?cid=' . $n['id'] . '">#' . $n['id'] . ':' . $n['banco'] . ':' . $n['moneda'] . ':' . $n['cuenta'] . '</a></div><small>' . $n['numero'] . ' - Ajustado: ' . ($n['ajustes']) . '</small>',
+            '<span title="' . implode(',', [$n['moneda'], ': CONTABLE ACTUAL']) . '">' . $n['contable'] . '</span>',
+            '<span title="' . implode(',', [$n['moneda'], 'DISPONIBLE ACTUAL']) . '">' . $n['disponible'] . '</span>',
+            '<span title="' . implode(',', [$n['moneda'], 'PROYECTADO DISPONIBLE ACTUAL']) . '">' . ($n['proyectado_disponible'] + $n['disponible']) . '</span>',
           );
         })
         ->get();
@@ -82,7 +82,12 @@ class FinancieroController extends Controller
     public function create_movimiento_store(Request $request) {
       $form = Financiero::formMovimiento();
       if(!$form->isValid()) {
-        return response()->back();
+        return response()->back()->with('message', $form->error());
       }
+      $data = $form->data();
+      unset($data->tags);
+      $data->tenant_id = 1;
+      db('financiero')->insert('financiero.movimiento', (array) $data);
+      return response()->redirect('financiero.index');
     }
 }

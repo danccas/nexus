@@ -1,4 +1,4 @@
-@extends('layouts.modern')
+@extends('layouts.ajax')
 @section('content')
 
 <div class="card">
