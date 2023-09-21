@@ -31,7 +31,7 @@ return [
     */
 
     'connections' => [
-      'financiero' => 'pgsql://postgres:meteLPBDo0gmsc3d@10.21.32.3:5432/creainter',
+      'financiero' => 'pgsql://postgres:@10.21.32.3:5432/creainter',
       'interno' => [
         'dsn' => 'pgsql://postgres:123456@10.20.30.40:5432/prosgres',
       ],
