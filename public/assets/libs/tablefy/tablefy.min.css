@@ -297,7 +297,7 @@
   }
   .tablefy .tablefy_tables tbody > tr > td > div {
     margin: 5px;
-    white-space: pre-line;
+    /* white-space: pre-line; */
   }
   .tablefy .tablefy_tables tbody > tr.marked {
     border: 1px solid #3B7399;

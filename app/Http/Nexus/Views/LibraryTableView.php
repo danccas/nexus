@@ -29,7 +29,7 @@ class LibraryTableView extends Tablefy
         return [
             $model->id,
             $model->usuario,
-            $model->clave,
+            $model->usuario,
             $model->created_on
         ];
     }
