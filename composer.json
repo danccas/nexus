@@ -7,9 +7,10 @@
     "require": {
         "php": "^8.0",
         "danccas/nexus-framework": "^1.0.0",
-        "setasign/fpdf": "1.8.*",
-        "setasign/fpdi": "^2.0",
-        "bacon/bacon-qr-code": "2.0.8"
+        "bacon/bacon-qr-code": "2.0.8",
+        "tecnickcom/tcpdf": "6.3.*",
+        "setasign/fpdi": "^2.0"
+
     },
     "autoload": {
         "psr-4": {
@@ -22,6 +23,7 @@
         }
     },
     "scripts": {
+        "post-update-cmd": "Core\\Composer::postUpdate"
     },
     "extra": {
         "nexus": {
