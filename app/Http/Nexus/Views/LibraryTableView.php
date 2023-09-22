@@ -5,6 +5,7 @@ namespace App\Http\Nexus\Views;
 use Core\Nexus\Tablefy;
 use Core\Nexus\Header;
 use Core\Nexus\Action;
+use Core\Request;
 use App\Http\Nexus\Actions\ActivateUserAction;
 use App\Models\Libro;
 
@@ -53,5 +54,13 @@ class LibraryTableView extends Tablefy
         return [
             new ActivateUserAction,
         ];
+    }
+    public function controller(Request $request)
+    {
+        $response = $this
+          ->repository()
+          ->appends(request()->input())
+          ->get();
+        return response()->json($response);
     }
 }
