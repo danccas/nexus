@@ -298,6 +298,8 @@
   .tablefy .tablefy_tables tbody > tr > td > div {
     margin: 5px;
     white-space: pre-line;
+    word-break: break-word;
+    font-size: 12px;
   }
   .tablefy .tablefy_tables tbody > tr.marked {
     border: 1px solid #3B7399;
