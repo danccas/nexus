@@ -250,3 +250,495 @@
   --vz-vertical-menu-border-gradient: var(--vz-primary);
   --vz-twocolumn-menu-bg-dark: var(--vz-primary);
 }
+
+
+/*================================================================================
+	Item Name: Frest HTML Admin Template
+	Version: 1.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+/* .card {
+  margin-right: 0!important;
+  margin-left: 0!important;
+} */
+
+
+.modal {
+  --vz-modal-zindex: 9999999;
+}
+.modal-backdrop {
+  --vz-backdrop-zindex: 9999998;
+}
+.header-navbar .navbar-container ul.nav li.dropdown .dropdown-menu {
+  z-index: 999999999999;
+}
+.heading-upper {
+  position: absolute;
+  top: -45px!important;
+  right: 0!important;
+}
+.heading-upper .btn {
+  padding: 3px 15px!important;
+}
+html .content.app-content {
+  overflow: unset!important;
+}
+html .navbar-static .content {
+  min-height: calc(100% - 75px)!important;
+  margin-top: 10px!important;
+  position: relative;
+}
+.app-content.content {
+  margin-top: 70px;
+}
+.app-content.content .content-wrapper {
+/*  position: absolute; */
+}
+html .navbar-static .app-content .content-wrapper {
+  padding: 0px!important;
+  height: 100%;
+  height: -webkit-fill-available;
+}
+.content-wrapper > .content-body {
+  height: 100%;
+  height: -webkit-fill-available;
+}
+.header-navbar .navbar-container ul.nav li.dropdown-user .dropdown-menu-right {
+  z-index: 999;
+}
+.app-content-second {
+/*  border: 1px solid #dbdbdb;*/
+  border-radius: 0;
+  margin: 15px;
+  height: 98%;
+  height: -webkit-fill-available;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
+}
+
+.app-content.content .x-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.x-page .x-page {
+  height: 100%;
+}
+.app-content.content .x-page > .x-page-overlay {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: relative;
+  background: rgb(0 0 0 / 48%);
+  position: absolute;
+  z-index: 99;
+  cursor:pointer;
+}
+.app-content.content .x-page > .x-page-overlay:hover {
+  background: rgb(123 194 255 / 45%);
+}
+.app-content.content .x-page > .x-page-body {
+  background: #f2f4f4;
+  position: relative;
+  z-index: 99;
+  overflow: auto;
+  max-height: 100%;
+  min-height: 100%;
+  padding: 0 20px; /* TODO */
+}
+.app-content.content .x-page > .x-page-body.x-page-loading {
+  height: 800px;
+  background: #fff;
+}
+.app-content.content .x-page > .x-page-body.x-page-loading:before {
+  content: ' ';
+  color: #816bff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  font-size: 25px;
+  font-family: 'Rubik';
+  background: #fff no-repeat center center;
+  background-image: url(https://cdn.dribbble.com/users/503653/screenshots/3143656/fluid-loader.gif);
+}
+.app-content.content .x-page > .x-page-body > .content-wrapper {
+  margin-top: 0;
+}
+.app-content.content .x-page > .x-page-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-left: 100px;
+  width: 100%;
+  max-width: 95%;
+  max-width: calc(100% - 100px);
+}
+.app-content.content .x-page > .x-page-nav > .x-page > .x-page-overlay {
+  left: -100px;
+}
+.table-padding-less td {
+  padding: 2px 0px;
+}
+.table-padding-less th {
+  padding: 2px 0px;
+}
+
+
+
+.card-header {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+
+/* Footer */
+footer.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  height: 25px;
+  z-index: 99;
+}
+footer.footer:hover {
+  height: unset;
+}
+footer.footer > div {
+  padding: 0 18px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.footer_widget {
+    height: 70px;
+    position: relative;
+}
+.card_footer {
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #e0e5e5;
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+.card_footer:hover {
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right:0;
+  z-index: 99;
+  min-height: 70px;
+  overflow: unset!important;
+  height: fit-content;
+  max-height:600px;
+}
+.card_footer .card_details {
+  display: none;
+  background: #f5f5f5;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  padding: 5px;
+  margin-top: 8px;
+}
+.card_footer:hover .card_details {
+  display: revert!important;
+}
+.card_footer_show {
+  position: absolute;
+  bottom: 0;
+  z-index: 99;
+}
+
+
+.hovered {
+  background-color: #9dff9d!important;
+}
+.fell {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  z-index: 999;
+  display: inline-block;
+}
+.fell > .currents {
+  display: flex;
+}
+.fell > .others {
+}
+.fell > div > a {
+  padding: 0;
+  margin: 0 2px;
+  display: inline-block;
+}
+.fell > div > a > .fell_name {
+  text-transform: capitalize;
+  position: relative;
+  text-align: center;
+  border-radius: 30px;
+  cursor: pointer;
+  padding: 0 2px;
+}
+.fell > div > a > .fell_count {
+  background: #fff;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    color: #000;
+    line-height: 16px;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+.fell > .currents > a {
+  margin-right: 5px;
+}
+.fell > .currents > a > .fell_name {
+  background: #2aa122;
+  color: #fff;
+  border: 2px solid #ffffff;
+  min-width: 50px;
+  height: 50px;
+  font-size: 30px;
+  line-height: 45px;
+}
+.fell > .others > a {
+  margin-bottom: 2px;
+}
+.fell > .others > a > .fell_name {
+  background: #1086ff;
+  color: #fff;
+  border: 2px solid #3c3c3c;
+  min-width: 30px;
+  height: 30px;
+  line-height: 25px;
+}
+.actphone {
+position: fixed;
+    top: 90px;
+    right: -610px;
+    margin: 0 auto;
+    background: #fff;
+    width: 600px;
+    min-height: 300px;
+    z-index: 999;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    padding-bottom:20px;
+}
+.actphone.visible {
+  right: -5px!important;
+}
+.actphone_id {
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    color: #c9c9c9;
+}
+.actphone_input {
+text-align: center;
+    margin: 30px 10px;
+    margin-bottom: 10px;
+    position: relative;
+    background: #f7f7f7;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+}
+.actphone_number {
+border: 0;
+    background: transparent;
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+    padding: 0;
+}
+.actphone_regs {
+  font-size: 14px;
+  color: #767676;
+  list-style: none;
+  margin: 0;
+  padding: 0 30px;
+}
+.actphone_regs li {
+    background: #ddecff;
+    color: #303030;
+    padding: 3px 0;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+.actphone_text {
+margin: 0 20px;
+    text-align: center;
+    padding-bottom: 8px;
+}
+.actphone_label {
+  text-align: left;
+  font-size: 12px;
+}
+.actphone_textarea {
+width: 100%;
+    padding: 5px;
+}
+.actphone_btns {
+    padding: 5px 22px;
+    text-align: center;
+}
+.actphone_btns > .llamar {
+  background: #35bf53;
+  color: #fff;
+}
+.actphone_btns > .cancelar {
+  background: #ff5f5f;
+  color: #fff;
+}
+
+.voip_callers {
+  position: fixed;
+    top: 10px;
+    left: 50%;
+    z-index: 99999999;
+    width: 500px;
+    margin-left: -250px;
+}
+.voip_call {
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px -1px #8d8d8d;
+    border: 1px solid #32ff0d;
+    padding: 10px;
+    background: #fff;
+    position: relative;
+    min-height: 70px;
+    margin-bottom: 10px;
+}
+.voip_call i {
+  font-size: 25px;
+    position: absolute;
+    top: 50px;
+    left: 240px;
+    color: #62ff2e;
+}
+.voip_side {
+  position: absolute;
+    top: 0;
+    width: 250px;
+    padding: 10px;
+}
+.voip_from {
+    left: 0;
+}
+.voip_to {
+  right: 0;
+}
+.voip_side input {
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.voip_side div {
+  text-align: center;
+}
+.voip_message {
+  text-align: center;
+  padding: 0 10px;
+  padding-top: 60px;
+}
+.voip_time {
+  position: absolute;
+  top: 50px;
+  left: 235px;
+  font-size: 11px;
+}
+.todo_block {
+    width: 100%;
+    min-height: 50px;
+    z-index: 99;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+    font-size: 12px;
+}
+.todo_block.comprimir {
+  max-height: 15px;
+  min-height: 15px;
+}
+.todo_block thead {
+  cursor: pointer;
+}
+.todo_block_btn {
+position: absolute;
+    bottom: -20px;
+    right: 5px;
+    background: #fce173;
+    padding: 3px;
+    border-radius: 0 0 5px 5px;
+    font-size: 10px;
+    color: #000;
+    cursor: pointer;
+}
+.todo_block table {
+  width: 100%;
+  text-align: center;
+}
+.todo_block thead {
+  background: #bb9500;
+  color: #ffffff;
+  font-size:8px;
+}
+.todo_block tbody tr {
+  background: #fff;
+}
+.todo_block tbody tr:hover {
+  background: #ffdbc1;
+}
+.todo_block tbody td {
+  padding: 3px 0;
+}
+
+
+a {
+  text-decoration: none!important;
+}
+
+.table-xs th {
+  font-size: 9px!important;
+}
+
+.table-xs td {
+  font-size: 10px;
+  padding: 0;
+}
+
+
+iframe {
+  width: 100%;
+}
+.badge-light-success {
+  background: #74e559;
+}
+.badge-light-danger {
+  background: #ff4646;
+}
+.badge-light-warning {
+  background: #ffc800;
+}
