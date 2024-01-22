@@ -106,15 +106,15 @@ function Fetchx(params, inmediate) {
         var temp_success = params.success;
         params.success = function ($x) {
             ocultar();
-            temp_success($x, params);
             if(typeof params.title !== 'undefined') {
               toastr.clear(idToast);
               toastr.success('Se ha realizado con éxito', params.title, { positionClass: 'toast-bottom-right', containerId: 'toast-bottom-right', 'timeOut': 2000 });
             }
+          temp_success($x);
         };
     } else {
         params.success = function ($x) {
-            ocultar($x, params);
+            ocultar();
             if(typeof params.title !== 'undefined') {
               toastr.clear(idToast);
               toastr.success('Se ha realizado con éxito', params.title, { positionClass: 'toast-bottom-right', containerId: 'toast-bottom-right', 'timeOut': 2000 });
@@ -124,7 +124,7 @@ function Fetchx(params, inmediate) {
     var temp_error = params.error;
     params.error = function ($x) {
       typeof temp_error !== 'undefined' && temp_error();
-      ocultar($x, params);
+      ocultar();
       if(typeof params.title !== 'undefined') {
         toastr.clear(idToast);
         toastr.error('Ocurrió un problema durante la ejecución', params.title, { positionClass: 'toast-bottom-right', containerId: 'toast-bottom-right', 'timeOut': 2000 });
@@ -1047,6 +1047,8 @@ function render_editable() {
         clearTimeout(stf);
       }
       stt = setTimeout(function() {
+        var input_01 = box.attr('data-input-01');
+        var input_02 = box.attr('data-input-02');
         var tt = is_html ? box.html() : (is_div ? box.text() : box.val());
         console.log('ENVIAR', tt);
         if(tt === svv) {
@@ -1054,14 +1056,14 @@ function render_editable() {
         }
         svv = tt;
           Fetchx({
-            title: 'EdiciÃ³n',
+            title: 'Edición',
             url: xhr,
             headers : {
                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute("content")
             },
             dataType: 'json',
             type: 'PUT',
-            data: { value: tt },
+            data: { value: tt, input_01: input_01, input_02: input_02 },
             complete: function() {
               box.addClass('saved');
               stf = setTimeout(function() {

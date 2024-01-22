@@ -357,6 +357,7 @@ html .navbar-static .app-content .content-wrapper {
   max-height: 100%;
   min-height: 100%;
   padding: 0 20px; /* TODO */
+  padding-bottom: 30px;
 }
 .app-content.content .x-page > .x-page-body.x-page-loading {
   height: 800px;
