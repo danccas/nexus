@@ -341,7 +341,7 @@ td.tablefy-td[data-xeditable=true].xedit-error:before {
 
 .tablefy .tablefy_tables tbody>tr>td>div {
   margin: 5px;
-  white-space: pre-line;
+  white-space: normal;
   word-break: break-word;
   font-size: 12px;
 }
