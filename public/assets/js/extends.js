@@ -24,6 +24,7 @@ function _addTag(box, tag) {
   }
   return false;
 }
+
 function toHHMMSS(text) {
     var sec_num = parseInt(text, 10); // don't forget the second param
     var hours   = Math.floor(sec_num / 3600);
@@ -685,13 +686,37 @@ function render_time_left() {
     restar(box, text);
   });
 }
-function render_confirm_input() {
-  $("[data-confirm-input]").each(function () {
-    if(!_addTag(this, 'confirm-input')) {
+function render_time_ago() {
+  $("[data-time-ago]").each(function() {
+    if(!_addTag(this, 'time-ago')) {
       return false;
     }
     var box  = this;
-    var text = $(box).attr("data-confirm-input") || 'Â¿Cual fue el motivo?';
+    var text = $(box).attr("data-time-ago") || '0';
+    text     = parseInt(text);
+    var restar = function(domi, seconds) {
+      let diff = Math.floor((Date.now() - seconds) / 1000);
+      if(diff <= 10) {
+        $(domi).text('Hace instantes...');
+      } else {
+        setTimeout(function() {
+          restar(domi, seconds);
+        }, 1000);
+        $(domi).text(toHHMMSS(diff));
+      }
+    };
+    restar(box, text);
+  });
+}
+function render_confirm_input() {
+  $("[data-confirm-input]").each(function () {
+    if(!_addTag(this, 'confirm-input')) {
+      return;
+    }
+    var box  = this;
+    var text = $(box).attr("data-confirm-input") || '¿Cual fue el motivo?';
+    var ddff = $(box).attr("data-confirm-input-default") || '';
+    var fnl  = $(box).attr("data-confirm-input-final");
     var url  = $(box).attr('href');
     $(this).on("click", function (e) {
       if(typeof $(box).attr('data-skip2') === 'undefined' && typeof $(box).attr('disabled') === 'undefined') {
@@ -707,9 +732,17 @@ function render_confirm_input() {
                   '<div class="input-group input-group-lg mb-1">' +
                   '<input type="text" class="form-control bg-white border-0">' +
                   '<button class="btn btn-primary" type="button" id="subscribe">Realizar</button>' +
-                  '</div><div class="text-start text-white opacity-50">Debe indicar el motivo de su solicitud</div></div></div></div>');
+                  '</div><div class="text-start text-white opacity-50">Debe indicar el motivo de su solicitud.22</div></div></div></div>');
             $("body").append(modal);
+            modal.find('input').val(ddff);
             modal.modal("show");
+            setTimeout(() => { modal.find('input').focus(); }, 500);
+            modal.find('input').on('keydown', function(e) {
+              if (e.key === "Enter") {
+                event.preventDefault();
+                modal.find("button.btn-primary").trigger('click');
+              }
+            });
             modal.find("button.btn-primary").on("click", function () {
               if($(box).data('fn_dinamic') === 1) {
                 modal.modal('hide');
@@ -737,12 +770,15 @@ function render_confirm_input() {
                       modal.remove();
                       $('body').removeClass('modal-open');
                       $(".modal-backdrop").remove();
+                      if(typeof fnl !== 'undefined' && fnl != '') {
+                        eval(fnl);
+                      }
                     }
                   }
                 });
               }
             });
-            return false;
+        return;
       } else {
         $(box).removeAttr('data-skip2');
       }
@@ -809,6 +845,9 @@ function render_block_dinamic() {
         },
         success: function(res) {
           boxc.html(res);
+          setTimeout(() => {
+            micro_ready();
+	  }, 500);
         },
         complete: function() {
           if(refresh > 1) {
@@ -957,6 +996,7 @@ function render_button_dinamic() {
       }
       var href  = $(this).attr('href');
       var box   = $(this);
+      var fnl  = $(box).attr("data-confirm-input-final");
       var boxes = $("[href='" + href + "']");
       Fetchx({
         url: href,
@@ -1000,6 +1040,9 @@ function render_button_dinamic() {
             return n.fire("Denegado", res.message, "error");
           } else {
             toastr.success(res.message, res.label, { positionClass: 'toast-bottom-right', containerId: 'toast-bottom-right', 'timeOut': 2000 });
+            if(typeof fnl !== 'undefined' && fnl != '') {
+              eval(fnl);
+            }
           }
           return res;
         },
@@ -1120,6 +1163,7 @@ function render_editable() {
     });
   });
 }
+var fnCallbackMicroReady = [];
 function micro_ready() {
   console.log('init micro_ready');
   render_bootstrap();
@@ -1132,9 +1176,18 @@ function micro_ready() {
   render_input_ajax();
   render_select_default();
   render_editable();
-  render_button_dinamic();
   render_block_dinamic();
+  render_button_dinamic();
   render_time_left();
+  render_time_ago();
+  for(var ii in fnCallbackMicroReady) {
+    if(fnCallbackMicroReady.hasOwnProperty(ii)) {
+      fnCallbackMicroReady[ii]();
+    }
+  }
+}
+function micro_ready_add(fn) {
+  fnCallbackMicroReady.push(fn);
 }
 
 $(document).ready(function () {
