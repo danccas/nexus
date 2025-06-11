@@ -5,9 +5,11 @@ declare(strict_types=1);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL & ~E_NOTICE);
+
 date_default_timezone_set('America/Lima');
 
 define('NEXUS_START', microtime(true));
+define('NEXUS_CLI', false);
 
 require __DIR__ . '/../vendor/autoload.php';
 $app = require_once __DIR__ . '/../bootstrap/app.php';

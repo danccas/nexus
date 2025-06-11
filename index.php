@@ -3,7 +3,13 @@ declare(strict_types=1);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL & ~E_NOTICE);
+
+
+#echo "Proceso de mantenimiento. Retorno aproximado a las ###";
+#exit;
+
 define('NEXUS_START', microtime(true));
+define('NEXUS_CLI', true);
 
 require __DIR__ . '/vendor/autoload.php';
 
